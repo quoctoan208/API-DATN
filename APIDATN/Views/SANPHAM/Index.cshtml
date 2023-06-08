@@ -1,0 +1,153 @@
+﻿@model IEnumerable<APIDATN.Models.tbl_SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+    <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Trang chủ</a></li>
+                <li class="breadcrumb-item text-sm text-white active" aria-current="page">Sản phẩm</li>
+            </ol>
+            <h6 class="font-weight-bolder text-white mb-0">Sản Phẩm</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                <div class="input-group">
+                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Tìm Kiếm">
+                </div>
+            </div>
+            <ul class="navbar-nav  justify-content-end">
+                <li class="nav-item d-flex align-items-center">
+                    <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                        <i class="fa fa-user me-sm-1"></i>
+                        <span class="d-sm-inline d-none">Quản trị viên</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h4>Danh Sách Sản phẩm</h4>
+                    <a class="btn btn-success" href="/SANPHAM/Create">Tạo mới</a>
+
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sản phẩm</th>
+
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Đơn giá</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số lượng</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mô tả sản phẩm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Xác nhận duyệt</th>
+
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    //APIDATN.Models.tbl_THELOAI theloai = list.Where(x => x.maTL == item.maTL).First();
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div>
+                                                <img src="@item.anhSP" class="avatar avatar-xxl me-3">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <a href="/SANPHAM/Edit/@item.maSP">
+                                                    <h6 class="mb-0 text-sm">@item.tenSP</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    @if (item.xetDuyet == 2)
+                                    {
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm bg-gradient-success">Đã duyệt</span>
+                                        </td>
+                                    }
+                                    else if (item.xetDuyet == 1)
+                                    {
+
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm bg-gradient-warning">Chờ duyệt</span>
+                                        </td>
+                                    }
+
+                                    <td class="align-middle text-center">
+                                        <span class="text-primary text-xs font-weight-bold">@string.Format("{0:#,##0} VND", item.donGia)</span>
+                                    </td>
+
+                                    <td class="align-middle text-center">
+                                        <span class="text-secondary text-xs font-weight-bold">@item.soLuong</span>
+                                    </td>
+                                    @if (item.matoSP != null)
+                                    {
+                                        if (item.matoSP.ToString().Length > 50)
+                                        {
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.matoSP.Substring(0, 50)...</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.matoSP</span>
+                                            </td>
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@item.matoSP</span>
+                                        </td>
+                                    }
+
+                                    @if (item.xetDuyet == 2)
+                                    {
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-danger" href="@Url.Action("HuyDuyet", new { maSP = item.maSP})">Hủy Duyệt</a>
+                                        </td>
+                                    }
+                                    else if (item.xetDuyet == 1)
+                                    {
+
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-success" href="@Url.Action("XetDuyet", new { maSP = item.maSP})">Duyệt</a>
+                                        </td>
+                                    }
+
+
+
+
+                                </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,27 @@
+﻿@model APIDATN.Models.tbl_THELOAI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_THELOAI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenTL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenTL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maTL }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

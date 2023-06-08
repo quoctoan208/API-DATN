@@ -1,0 +1,57 @@
+﻿@model APIDATN.Models.tbl_TAIKHOAN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h4>Danh Sách Sản phẩm</h4>
+                    <a class="btn btn-success"  @Html.ActionLink("Sửa Thông tin", "Edit", new { id = Model.maSV }) </a>
+                    <a class="btn btn-danger" @Html.ActionLink("Xóa tài khoản", "Delete", new { id = Model.maSV })</a>
+
+                    <div>
+
+                        <dl class="dl-horizontal">
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Sinh Viên:  @Html.DisplayFor(model => model.maSV)</th>
+                            <br />
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Lớp: @Html.DisplayFor(model => model.maLop)</th>
+                            <br />
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mật Khẩu: @Html.DisplayFor(model => model.matKhau)</th>
+                            <br />
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Họ Tên Sinh Viên: @Html.DisplayFor(model => model.hoVaTen)</th>
+                            <br />
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Địa chỉ: @Html.DisplayFor(model => model.diaChi)</th>
+                            <br />
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số điện thoại:  @Html.DisplayFor(model => model.sDT)</th>
+                            <br />
+
+
+                        </dl>
+                    </div>
+                    <p>
+                        <a class="btn btn-dark"  @Html.ActionLink("Quay lại", "Index")</a>
+                       
+                    </p>
+
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

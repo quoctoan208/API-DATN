@@ -1,0 +1,83 @@
+﻿@model APIDATN.Models.tbl_SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>CHI TIẾT SẢN PHẨM</h4>
+
+<div>
+    <h4>Thông Tin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anhSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anhSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matoSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matoSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.xetDuyet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.xetDuyet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maSV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maSV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_THELOAI.tenTL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_THELOAI.tenTL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maSP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
